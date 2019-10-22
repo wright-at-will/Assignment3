@@ -1,9 +1,6 @@
 import Canvas.Interpreter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 
 public class App {
 
@@ -21,5 +18,10 @@ public class App {
             return;
         }
         Interpreter interpreter = new Interpreter(reader);
+        try {
+            interpreter.executeCommands();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

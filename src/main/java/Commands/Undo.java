@@ -1,15 +1,13 @@
 package Commands;
 
-public class Create implements Command {
+public class Undo implements Command {
 
     public Command execute() {
-        return new Color() {
+        return new Undo() {
             @Override
             public Command execute() {
                 return null;
             }
         };
-
-
     }
 }
