@@ -1,13 +1,22 @@
 package Commands;
 
-public class Delete implements Command{
+import Canvas.DrawCanvas;
+import Shapes.Shape;
 
-    public Command execute() {
-        return new Undo() {
-            @Override
-            public Command execute() {
-                return null;
-            }
-        };
+public class Delete extends Command{
+    Shape deletedShape;
+    int shapeLocation;
+    Delete(DrawCanvas canvas){
+        super(canvas);
+    }
+    @Override
+    public void execute() {
+        shapeLocation = canvas.getSelect();
+        deletedShape = canvas.remove();
+    }
+
+    @Override
+    public void undo() {
+        canvas.add(deletedShape, shapeLocation);
     }
 }

@@ -2,15 +2,15 @@ package Commands;
 
 import Canvas.DrawCanvas;
 
-public class Undo extends Command {
+public class DrawScene extends Command {
 
-    Undo(DrawCanvas canvas, String ... params){
+    public DrawScene(DrawCanvas canvas){
         super(canvas);
     }
 
     @Override
     public void execute() {
-
+        canvas.drawScene();
     }
 
     @Override

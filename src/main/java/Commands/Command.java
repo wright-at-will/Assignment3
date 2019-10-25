@@ -1,5 +1,15 @@
 package Commands;
 
-public interface Command {
-    Command execute();
+import Canvas.DrawCanvas;
+
+public abstract class Command {
+
+    DrawCanvas canvas;
+
+    Command(DrawCanvas canvas){
+        this.canvas = canvas;
+    }
+
+    abstract void execute();
+    abstract void undo();
 }

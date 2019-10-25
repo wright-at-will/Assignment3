@@ -1,3 +1,4 @@
+import Canvas.DrawCanvas;
 import Canvas.Interpreter;
 
 import java.io.*;
@@ -5,7 +6,6 @@ import java.io.*;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Starting the project");
         BufferedReader reader = null;
         try {
             if(args.length != 1) {
@@ -17,7 +17,7 @@ public class App {
             System.err.println("File not found: "+args[0]);
             return;
         }
-        Interpreter interpreter = new Interpreter(reader);
+        Interpreter interpreter = new Interpreter(reader, new DrawCanvas());
         try {
             interpreter.executeCommands();
         } catch (IOException e) {

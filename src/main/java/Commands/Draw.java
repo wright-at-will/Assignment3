@@ -1,13 +1,23 @@
 package Commands;
 
-public class Draw implements Command {
+import Canvas.DrawCanvas;
+import Shapes.Shape;
 
-    public Command execute() {
-        return new Undo() {
-            @Override
-            public Command execute() {
-                return null;
-            }
-        };
+public class Draw extends Command {
+
+    Shape selectedShape;
+
+    Draw(DrawCanvas canvas){
+        super(canvas);
+    }
+
+    @Override
+    public void execute() {
+        canvas.draw();
+    }
+
+    @Override
+    public void undo() {
+
     }
 }

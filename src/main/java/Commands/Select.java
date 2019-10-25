@@ -1,15 +1,22 @@
 package Commands;
 
-public class Select implements Command {
+import Canvas.DrawCanvas;
 
+public class Select extends Command {
 
-    public Command execute() {
-        return new Undo() {
-            @Override
-            public Command execute() {
-                return null;
-            }
-        };
+    int selection;
+    Select(DrawCanvas canvas, String selection) throws  CommandException{
+        super(canvas);
+        this.selection = Integer.parseInt(selection);
     }
 
+    @Override
+    public void execute() {
+        selection = canvas.setSelected(selection);
+    }
+
+    @Override
+    public void undo() {
+        canvas.setSelected(selection);
+    }
 }
