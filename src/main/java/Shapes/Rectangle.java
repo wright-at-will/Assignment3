@@ -2,15 +2,15 @@ package Shapes;
 
 public class Rectangle extends Shape {
 
-    int h, w;
-    public Rectangle(String h, String w){
-        this.h = Integer.parseInt(h);
-        this.w = Integer.parseInt(w);
+    int height, width;
+    public Rectangle(String width, String height){
+        this.height = Integer.parseInt(height);
+        this.width = Integer.parseInt(width);
         color = "Red";
     }
 
     @Override
     public void draw() {
-        System.out.printf("Rectangle, Color: %s, Origin: (%d,%d), Width: %d, Height: %d\n", color, point.x, point.y, w, h);
+        System.out.printf("Rectangle, Color: %s, Origin: (%d,%d), Width: %d, Height: %d\n", color, point.x, point.y, width, height);
     }
 }

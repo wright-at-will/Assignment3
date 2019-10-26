@@ -19,12 +19,10 @@ public abstract class Shape {
         return oldPoint;
     }
 
-
     public String color(String newColor){
         String oldColor = color;
         color = newColor;
         return oldColor;
     }
-
 
 }

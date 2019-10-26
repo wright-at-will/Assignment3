@@ -1,10 +1,6 @@
 package Commands;
 
-
 import Canvas.DrawCanvas;
-import Shapes.Shape;
-
-import java.util.ArrayList;
 import java.util.Stack;
 
 public class CommandBuilder {
@@ -17,16 +13,18 @@ public class CommandBuilder {
     }
 
     public void createCommand(String command, String ... params){
+        boolean didUndo = false;
         CommandName commandName = CommandName.valueOf(command);
         try{
             switch (commandName){
                 case COLOR:
-                    commands.add(new Color(canvas, params));
+                    commands.push(new Color(canvas, params));
                     break;
                 case CREATE:
                     commands.push(new Create(canvas, params));
                     break;
                 case DELETE:
+                    commands.push(new Delete(canvas));
                     break;
                 case DRAW:
                     commands.push(new Draw(canvas));
@@ -41,9 +39,13 @@ public class CommandBuilder {
                     commands.push(new Select(canvas, params[0]));
                     break;
                 case UNDO:
+                    didUndo = true;
+                    Command undoCommand = commands.pop();
+                    undoCommand.undo();
                     break;
             }
-            commands.peek().execute();
+            if (!didUndo)
+                commands.peek().execute();
         } catch (CommandException e){
             System.err.println(e);
         }

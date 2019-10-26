@@ -9,8 +9,8 @@ import java.util.Stack;
 public class DrawCanvas {
 
     private ArrayList<Shape> shapes;
-    //private Shape selectedShape;
     private int select;
+
     public DrawCanvas(){
         shapes = new ArrayList<>();
     }

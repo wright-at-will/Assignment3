@@ -1,14 +1,12 @@
 package Commands;
 
 import Canvas.DrawCanvas;
-import Shapes.Shape;
-
 import java.awt.*;
 
 public class Move extends Command {
 
-    Shape selectedShape;
     Point point;
+    Point oldPoint;
 
     public Move(DrawCanvas canvas, String ... params) throws CommandException{
         super(canvas);
@@ -17,11 +15,11 @@ public class Move extends Command {
 
     @Override
     public void execute() {
-        point = canvas.getSelected().Move(point);
+        oldPoint = canvas.getSelected().Move(point);
     }
 
     @Override
     public void undo() {
-        canvas.getSelected().Move(point);
+        canvas.getSelected().Move(oldPoint);
     }
 }
